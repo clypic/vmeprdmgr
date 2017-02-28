@@ -1,0 +1,5 @@
+[
+  {"id":1,"name":"product1","description":"Sample product 1","price":1,"created":"2017-02-28 04:03:09"},
+  {"id":2,"name":"product2","description":"Sample product 2","price":1000,"created":"2017-02-28 04:03:09"},
+  {"id":3,"name":"product3","description":"Sample product 3","price":1000000,"created":"2017-02-28 04:03:09"}
+]
