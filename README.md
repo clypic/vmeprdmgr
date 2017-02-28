@@ -10,15 +10,15 @@ This project is in development.
 
 ##Getting Started
 
-1. Start the stack
+Start the stack
 ```sh
 $ docker-compose up -d
 ```
-2. Open in Browser
-- [Website](http://localhost:8080)
-- [Backoffice](http:localhost:8081)
+Open in Browser
+* [Website](http://localhost:8080)
+* [Backoffice](http:localhost:8081)
 
-3. Shut down the stack
+Shut down the stack
 ```sh
 $ docker-compose down
 ```
