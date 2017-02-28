@@ -1,0 +1,9 @@
+{
+  "name": "vmeprdmgr_apidocs",
+  "version": "0.1.0",
+  "description": "API reference",
+  "apidoc": {
+    "title": "VME Product Manager (TEST) API reference",
+    "url" : "http://localhost:8081"
+  }
+}

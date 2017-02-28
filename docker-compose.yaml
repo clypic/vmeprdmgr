@@ -1,0 +1,83 @@
+version: "3"
+services:
+
+  db:
+    labels:
+      vmeprdmgr.name: ${APP_NAME}
+      vmeprdmgr.version: ${APP_VERSION}
+      vmeprdmgr.author: ${APP_AUTHOR}
+      vmeprdmgr.licence: ${APP_LICENCE}
+    environment:
+      - APP_NAME
+      - APP_VERSION
+      - APP_AUTHOR
+      - APP_LICENCE
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    build: "./db"
+
+  app:
+    labels:
+      vmeprdmgr.name: ${APP_NAME}
+      vmeprdmgr.version: ${APP_VERSION}
+      vmeprdmgr.author: ${APP_AUTHOR}
+      vmeprdmgr.licence: ${APP_LICENCE}
+    environment:
+      - APP_NAME
+      - APP_VERSION
+      - APP_AUTHOR
+      - APP_LICENCE
+      - DB_DATABASE=${MYSQL_DATABASE}
+      - DB_USERNAME=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    build: "./app"
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - "8082:80"
+
+  apidocs:
+    labels:
+      vmeprdmgr.name: ${APP_NAME}
+      vmeprdmgr.version: ${APP_VERSION}
+      vmeprdmgr.author: ${APP_AUTHOR}
+      vmeprdmgr.licence: ${APP_LICENCE}
+    environment:
+      - APP_NAME
+      - APP_VERSION
+      - APP_AUTHOR
+      - APP_LICENCE
+    build: "./apidocs"
+    links:
+      - app
+    depends_on:
+      - app
+    expose:
+      - "80"
+    ports:
+      - "8081:80"
+
+  www:
+    labels:
+      vmeprdmgr.name: ${APP_NAME}
+      vmeprdmgr.version: ${APP_VERSION}
+      vmeprdmgr.author: ${APP_AUTHOR}
+      vmeprdmgr.licence: ${APP_LICENCE}
+    environment:
+      - APP_NAME
+      - APP_VERSION
+      - APP_AUTHOR
+      - APP_LICENCE
+    build: "./www"
+    links:
+      - app
+    depends_on:
+      - app
+    expose:
+      - "80"
+    ports:
+      - "8080:80"
